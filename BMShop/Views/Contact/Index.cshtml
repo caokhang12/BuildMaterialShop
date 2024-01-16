@@ -1,0 +1,51 @@
+﻿@model Model.EF.Contact
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section jsFooter{
+    <script src="~/Assets/client/js/controller/contactController.js"></script>
+    }
+
+<div class="main">
+    <div class="content">
+        <div class="section group">
+            <div class="col span_2_of_3">
+                <div class="contact-form">
+
+                    <h2>Liên hệ</h2>
+                    <form>
+                        <div>
+                            <span><label>Tên</label></span>
+                            <span><input type="text" id="txtName" class="textbox"></span>
+                        </div>
+                        <div>
+                            <span><label>E-mail</label></span>
+                            <span><input type="text" id="txtEmail" class="textbox"></span>
+                        </div>
+                        <div>
+                            <span><label>Điện thoại</label></span>
+                            <span><input type="text" id="txtPhone" class="textbox"></span>
+                        </div>
+                        <div>
+                            <span><label>Yêu cầu</label></span>
+                            <span><textarea id="txtContent" > </textarea></span>
+                        </div>
+                        <div>
+                            <span><input type="submit" value="Gửi" id="btnSend" class="myButton"></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col span_1_of_3">
+                <div class="contact_info">
+                    <h3>Địa chỉ</h3>
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.9267558502092!2d105.76867291042949!3d21.035616487463027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b79c94270f%3A0x37747f5dbed1c8dd!2zN0EgxJAuIEzDqiDEkOG7qWMgVGjhu40sIE1haSBE4buLY2gsIFThu6sgTGnDqm0sIEjDoCBO4buZaSAxMDAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1701076443073!5m2!1svi!2s" width="500" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                 @Html.Raw(Model.Content)
+            </div>
+        </div>
+    </div>
+</div>

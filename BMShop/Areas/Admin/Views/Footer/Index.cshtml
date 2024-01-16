@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Model.EF.Footer>
+
+@{
+    ViewBag.Title = "Chỉnh sửa footer";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+@section header{Chỉnh sửa Footer}
+
+@section jsFooter{
+    <script src="~/Assets/admin/js/controller/footerController.js"></script>
+}
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th colspan="2"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.Raw(item.Content)
+            </td>
+            <td>
+                <a href="#" class="btn-active" data-id="@item.ID">@(item.Status ? "Kích hoạt" : "Khóa")</a>
+            </td>
+            <td><a href="/Admin/Footer/Edit/@item.ID">Sửa</a></td>|
+            <td>
+                @Ajax.ActionLink("Xóa", "Delete", new { @id = @item.ID }, new AjaxOptions
+           {
+               Confirm = "Bạn có muốn xóa sản phẩm này",
+               OnComplete = "$('#row_" + item.ID + "').remove()",
+               HttpMethod = "Delete"
+           })
+            </td>
+        </tr>
+    }
+
+</table>

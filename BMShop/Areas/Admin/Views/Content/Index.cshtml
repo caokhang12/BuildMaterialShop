@@ -1,0 +1,79 @@
+﻿@model PagedList.IPagedList<Model.EF.Content>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Quản lý tin tức";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+@section header{Danh sách tin tức}
+
+@section jsFooter{
+    <script src="~/Assets/admin/js/controller/contentController.js"></script>
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Index", "Content", FormMethod.Get))
+        {
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="searchString">Tìm tiêu đề:</label>
+                <input type="text" class="form-control bg-light border-0 small" value="@ViewBag.SearchString" name="searchString" id="searchString" placeholder="Nhập tên bài">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        }
+        <div>@Html.ActionLink("Tạo mới", "Create", "Content", null, new { @class = "btn btn-primary btn-sm active", @role = "button" })</div>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Tiêu đề</th>
+                        <th>Miêu tả</th>
+                        <th>Ảnh</th>
+                        <th>Bảo hành</th>
+                        <th>Tag</th>
+                        <th>Số lượt xem</th>
+                        <th>Trạng thái</th>
+                        <th colspan="2"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Description</td>
+                            <td><img src="@item.Image" class="img-fluid" />  </td>
+                            <td>@item.Warranty</td>
+                            <td>@item.Tags</td>
+                            <td>@item.ViewCount</td>
+                            <td><a href="#" class="btn-active" data-id="@item.ID">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
+                            <td><a href="/Admin/Content/Edit/@item.ID">Sửa</a></td>
+                            <td>
+                                @Ajax.ActionLink("Xóa", "Delete", new { @id = @item.ID }, new AjaxOptions
+                           {
+                               Confirm = "Bạn có muốn xóa bài này",
+                               OnComplete = "$('#row_" + item.ID + "').remove()",
+                               HttpMethod = "Delete"
+                           })
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+        </div>
+    </div>
+</div>
+
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>

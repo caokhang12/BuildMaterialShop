@@ -29,7 +29,7 @@
             </div>
             <div class="header_top">
                 <div class="logo">
-                    <a href="/" ref="nofollow" >
+                    <a href="/" ref="nofollow">
                         <img class="img-fluid" src="~/Data/Images/logo.png" />
                     </a>
                 </div>
@@ -67,8 +67,8 @@
             <div class="header_bottom">
                 @{Html.RenderAction("MainMenu", "Home"); }
                 <div class="search_box">
-                    <form action="tim-kiem" method="get">
-                        <input type="text"  id="txtKeyword" name="keyword" placeholder="Gõ từ khóa" ><input type="submit" value="">
+                    <form action="/tim-kiem" method="get">
+                        <input type="text" id="txtKeyword" name="keyword" placeholder="Gõ từ khóa"><input type="submit" value="">
                     </form>
                 </div>
                 <div class="clear"></div>
@@ -91,6 +91,7 @@
         });
     </script>
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+    <script src="~/Assets/client/js/controller/baseController.js"></script>
     @RenderSection("jsFooter", required: false)
 </body>
 </html>

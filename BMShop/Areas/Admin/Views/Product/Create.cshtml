@@ -1,5 +1,6 @@
 ﻿@model Model.EF.Product
 
+
 @{
     ViewBag.Title = "Quản lý sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
@@ -158,16 +159,16 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.TopHot, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.TopHot, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.TopHot, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                         @Html.ValidationMessageFor(model => model.TopHot, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ViewCount, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.ViewCount, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ViewCount, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control", @required ="required" } })
+                        @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
                     </div>
                 </div>
 

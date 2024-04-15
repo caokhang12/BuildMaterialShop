@@ -1,9 +1,5 @@
 ﻿using Model.Dao;
-using Model.EF;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BMShop.Controllers
@@ -11,7 +7,7 @@ namespace BMShop.Controllers
     public class ProductController : Controller
     {
         // GET: Product
-        public ActionResult Index( int page = 1, int pageSize = 4)
+        public ActionResult Index(int page = 1, int pageSize = 4)
         {
             var product = new ProductDao().ListAll();
             ViewBag.Product = product;
@@ -37,12 +33,12 @@ namespace BMShop.Controllers
             return PartialView(model);
         }
 
-        public ActionResult Category(long id, int page=1,int pageSize=2)
+        public ActionResult Category(long id, int page = 1, int pageSize = 2)
         {
             var category = new ProductCategoryDao().ViewDetail(id);
             ViewBag.Category = category;
             int totalRecord = 0;
-            var model = new ProductDao().ListByCategoryId(id,ref totalRecord,page,pageSize);
+            var model = new ProductDao().ListByCategoryId(id, ref totalRecord, page, pageSize);
             int maxPage = 5;
             int totalPage = 0;
             totalPage = (int)Math.Ceiling((double)(totalRecord / (double)pageSize));
@@ -69,9 +65,9 @@ namespace BMShop.Controllers
             var data = new ProductDao().ListName(term);
             return Json(new
             {
-                data = data,
+                data,
                 status = true
-            },JsonRequestBehavior.AllowGet);
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

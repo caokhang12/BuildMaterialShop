@@ -140,7 +140,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AboutController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
-    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\FeedbackController.cs" />
     <Compile Include="Areas\Admin\Controllers\FooterController.cs" />
@@ -184,6 +184,7 @@
     <Content Include="Assets\admin\js\controller\footerController.js" />
     <Content Include="Assets\admin\js\controller\feedbackController.js" />
     <Content Include="Assets\admin\js\controller\menuController.js" />
+    <Content Include="Assets\admin\js\controller\productCategoryController.js" />
     <Content Include="Assets\admin\js\controller\productController.js" />
     <Content Include="Assets\admin\js\controller\slideController.js" />
     <Content Include="Assets\admin\js\controller\userController.js" />
@@ -3406,6 +3407,9 @@
     <Content Include="Data\FILES\Phu-kien-nha-bep\iloveimg-resized %281%29.zip" />
     <Content Include="Data\FILES\Vlxd\Da-xd\iloveimg-resized.zip" />
     <Content Include="Data\FILES\Vlxd\Xi-mang\iloveimg-resized.zip" />
+    <Content Include="Areas\Admin\Views\ProductCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\Edit.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -3449,7 +3453,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Admin\Views\Category\" />
     <Folder Include="Data\flash\" />
     <Folder Include="Data\_thumbs\Files\" />
   </ItemGroup>

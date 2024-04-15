@@ -28,7 +28,7 @@
                 </div>
             </div>
         }
-        <div>@Html.ActionLink("Tạo mới", "Create", "Content", null, new { @class = "btn btn-primary btn-sm active", @role = "button" })</div>
+        <div>@Html.ActionLink("Tạo mới", "Create", "User", null, new { @class = "btn btn-primary btn-sm active", @role = "button" })</div>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -60,6 +60,7 @@
                            {
                                Confirm = "Bạn có muốn xóa tài khoản này",
                                OnComplete = "$('#row_" + item.ID + "').remove()",
+                               OnSuccess = "location.reload()",
                                HttpMethod = "Delete"
                            })
                             </td>

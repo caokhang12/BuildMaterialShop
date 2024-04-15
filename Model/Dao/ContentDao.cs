@@ -43,7 +43,6 @@ namespace Model.Dao
                 model.Image = entity.Image;
                 model.CategoryID = entity.CategoryID;
                 model.Detail = entity.Detail;
-                model.Warranty = entity.Warranty;
                 model.ModifiedBy = entity.ModifiedBy;
                 model.ModifiedDate = DateTime.Now;
                 model.MetaKeywords = entity.MetaKeywords;
@@ -84,7 +83,7 @@ namespace Model.Dao
                     db.SaveChanges();
                     return true;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return false;
                 }

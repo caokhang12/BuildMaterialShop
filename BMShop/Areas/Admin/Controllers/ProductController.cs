@@ -1,9 +1,5 @@
 ﻿using Model.Dao;
 using Model.EF;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BMShop.Areas.Admin.Controllers
@@ -21,7 +17,7 @@ namespace BMShop.Areas.Admin.Controllers
 
         public void SetViewBag(long? selectedId = null)
         {
-            var dao = new CategoryDao();
+            var dao = new ProductCategoryDao();
             ViewBag.CategoryID = new SelectList(dao.ListAll(), "ID", "Name", selectedId);
 
         }

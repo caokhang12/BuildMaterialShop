@@ -1,12 +1,7 @@
 ﻿using BMShop.Common;
 using Model.Dao;
 using Model.EF;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using PagedList;
 
 namespace BMShop.Areas.Admin.Controllers
 {
@@ -82,6 +77,13 @@ namespace BMShop.Areas.Admin.Controllers
         {
             new UserDao().Delete(id);
             return RedirectToAction("Index");
+        }
+
+        public void SetViewBag(long? selectedId = null)
+        {
+            var dao = new UserDao();
+            ViewBag.CategoryID = new SelectList(dao.ListAll(), "ID", "Name", selectedId);
+
         }
 
         public JsonResult ChangeStatus(long id)

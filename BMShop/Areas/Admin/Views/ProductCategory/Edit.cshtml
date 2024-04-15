@@ -1,40 +1,21 @@
-﻿@model Model.EF.About
+﻿@model Model.EF.ProductCategory
 
 @{
-    ViewBag.Title = "Quản lý giới thiệu";
+    ViewBag.Title = "Chỉnh sửa danh mục sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
 }
 
-@section header{Sửa phần giới thiệu}
-
-@section jsFooter{
-    <script>
-        $('#btnSelectImage').on('click', function (e) {
-            e.preventDefault();
-            var finder = new CKFinder();
-            finder.selectActionFunction = function (url) {
-                $('#txtImage').val(url);
-            };
-            finder.popup();
-        })
-
-        var editor = CKEDITOR.replace('txtContent', {
-            customConfig: '/Assets/admin/js/plugin/ckeditor/config.js',
-        });
-    </script>
-
-}
+@section header{Sửa danh mục sản phẩm}
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h4 class="m-0 font-weight-bold text-primary">Sửa nội dung bài đăng</h4>
-        @using (Html.BeginForm("Edit", "About", FormMethod.Post))
+        <h4 class="m-0 font-weight-bold text-primary">Sửa nội dung danh mục sản phẩm</h4>
+        @using (Html.BeginForm("Edit", "ProductCategory", FormMethod.Post))
 
         {
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                <h4>About</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -54,27 +35,26 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.ParentID, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        @Html.DropDownList("ParentID", null, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ParentID, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.DisplayOrder, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextAreaFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" }, id = "txtContent" })
-                        @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.DisplayOrder, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                        @Html.ValidationMessageFor(model => model.DisplayOrder, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.SeoTitle, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Image, new { htmlAttributes = new { type = "file", @class = "form-control", @id = "txtImage" }, @id = "txtImage" })
-                        <a id="btnSelectImage" href="#">Chọn ảnh</a>
-                        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.SeoTitle, new { htmlAttributes = new { type = "file", @class = "form-control", @id = "txtImage" }, @id = "txtImage" })
+                        @Html.ValidationMessageFor(model => model.SeoTitle, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -93,15 +73,13 @@
                         @Html.ValidationMessageFor(model => model.MetaDescriptions, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     @Html.LabelFor(model => model.ModifiedBy, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.ModifiedBy, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.TextBoxFor(model => model.ModifiedBy, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
                         @Html.ValidationMessageFor(model => model.ModifiedBy, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-auto" })
                     @Html.CheckBoxFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
@@ -115,5 +93,6 @@
                 </div>
             </div>
         }
+
     </div>
 </div>

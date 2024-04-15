@@ -36,6 +36,7 @@ namespace Model.Dao
                 }
                 user.Address = entity.Address;
                 user.Email = entity.Email;
+                user.GroupID = entity.GroupID;
                 user.Phone = entity.Phone;
                 user.ModifiedBy = entity.ModifiedBy;
                 user.ModifiedDate = DateTime.Now;
@@ -142,6 +143,10 @@ namespace Model.Dao
 
         }
 
+        public List<User> ListAll()
+        {
+            return db.User.Where(x => x.Status == true).ToList();
+        }
         public bool CheckUserName(string userName)
         {
             return db.User.Count(x=>x.UserName == userName) > 0;

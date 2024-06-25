@@ -1,12 +1,6 @@
-﻿using BMShop.Common;
-using Model.Dao;
+﻿using Model.Dao;
 using Model.EF;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using PagedList;
 
 namespace BMShop.Areas.Admin.Controllers
 {
@@ -73,7 +67,7 @@ namespace BMShop.Areas.Admin.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cập nhật sản phẩm không thành công");
+                    ModelState.AddModelError("", "Cập nhật bài viết không thành công");
                 }
             }
             SetViewBag(model.CategoryID);

@@ -1,4 +1,5 @@
 ﻿using Model.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,6 @@ namespace Model.Dao
         {
             return db.Category.Where(x=> x.Status == true).ToList();
         }
-        
 
     }
 }

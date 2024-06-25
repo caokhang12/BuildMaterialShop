@@ -54,6 +54,7 @@
                            {
                                Confirm = "Bạn có muốn xóa slide này",
                                OnComplete = "$('#row_" + item.ID + "').remove()",
+                               OnSuccess = "location.reload()",
                                HttpMethod = "Delete"
                            })
                             </td>

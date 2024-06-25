@@ -1,26 +1,25 @@
-﻿@model PagedList.IPagedList<Model.EF.User>
+﻿@model PagedList.IPagedList<Model.EF.ProductCategory>
 @using PagedList.Mvc;
-
 @{
-    ViewBag.Title = "Quản lý người dùng";
+    ViewBag.Title = "Quản lí danh mục sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
 }
-@section header{Danh sách người dùng}
+
+@section header{Danh sách danh mục sản phẩm}
 
 @section jsFooter{
-    <script src="~/Assets/admin/js/controller/userController.js"></script>
-    }
+    <script src="~/Assets/admin/js/controller/productCategoryController.js"></script>
+}
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        @*<h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>*@
     </div>
     <div class="card-body">
-        @using (Html.BeginForm("Index", "User", FormMethod.Get))
+        @using (Html.BeginForm("Index", "ProductCategory", FormMethod.Get))
         {
             <div class="input-group mb-3">
-                <label class="input-group-text" for="searchString">Tìm tài khoản:</label>
-                <input type="text" class="form-control bg-light border-0 small" value="@ViewBag.SearchString" name="searchString" id="searchString" placeholder="Nhập tên hoặc tài khoản">
+                <label class="input-group-text" for="searchString">Tìm sản phẩm:</label>
+                <input type="text" class="form-control bg-light border-0 small" value="@ViewBag.SearchString" name="searchString" id="searchString" placeholder="Nhập tên bài">
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-search"></i>
@@ -28,37 +27,40 @@
                 </div>
             </div>
         }
-        <div>@Html.ActionLink("Tạo mới", "Create", "Content", null, new { @class = "btn btn-primary btn-sm active", @role = "button" })</div>
+        <div>@Html.ActionLink("Tạo mới", "Create", "ProductCategory", null, new { @class = "btn btn-primary btn-sm active", @role = "button" })</div>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Tài khoản</th>
-                        <th>Họ tên</th>
-                        <th>Địa chỉ</th>
-                        <th>Email</th>
-                        <th>Số điện thoại</th>
+                        <th>Tên danh mục</th>
+                        <th>Mã danh mục</th>
+                        <th>Ngày tạo</th>
+                        <th>Tạo bởi</th>
+                        <th>Sửa bởi</th>
+                        <th>Ngày sửa</th>
+                        <th>Mục cha</th>
                         <th>Trạng thái</th>
-
                         <th colspan="2"></th>
-
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.UserName</td>
                             <td>@item.Name</td>
-                            <td>@item.Address</td>
-                            <td>@item.Email</td>
-                            <td>@item.Phone</td>
+                            <td>@item.MetaKeywords</td>
+                            <td>@item.CreatedDate</td>
+                            <td>@item.CreatedBy</td>
+                            <td>@item.ModifiedBy</td>
+                            <td>@item.ModifiedDate</td>
+                            <td>@item.ParentID</td>
+
                             <td><a href="#" class="btn-active" data-id="@item.ID">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
-                            <td><a href="/Admin/User/Edit/@item.ID">Sửa</a></td>
+                            <td><a href="/Admin/ProductCategory/Edit/@item.ID">Sửa</a></td>
                             <td>
                                 @Ajax.ActionLink("Xóa", "Delete", new { @id = @item.ID }, new AjaxOptions
                            {
-                               Confirm = "Bạn có muốn xóa tài khoản này",
+                               Confirm = "Bạn có muốn xóa danh mục này",
                                OnComplete = "$('#row_" + item.ID + "').remove()",
                                OnSuccess = "location.reload()",
                                HttpMethod = "Delete"

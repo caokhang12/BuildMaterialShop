@@ -55,6 +55,7 @@
                            {
                                Confirm = "Bạn có muốn xóa menu này",
                                OnComplete = "$('#row_" + item.ID + "').remove()",
+                               OnSuccess = "location.reload()",
                                HttpMethod = "Delete"
                            })
                             </td>

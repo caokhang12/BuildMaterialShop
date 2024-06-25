@@ -65,6 +65,7 @@
                            {
                                Confirm = "Bạn có muốn xóa sản phẩm này",
                                OnComplete = "$('#row_" + item.ID + "').remove()",
+                               OnSuccess = "location.reload()",
                                HttpMethod = "Delete"
                            })
                             </td>

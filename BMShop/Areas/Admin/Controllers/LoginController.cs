@@ -51,5 +51,10 @@ namespace BMShop.Areas.Admin.Controllers
             }
             return View("Index");
         }
+
+        public ActionResult Logout()
+        {
+            return Redirect("Index");
+        }
     }
 }

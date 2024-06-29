@@ -79,6 +79,13 @@ namespace BMShop.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        public void SetViewBag(long? selectedId = null)
+        {
+            var dao = new UserDao();
+            ViewBag.CategoryID = new SelectList(dao.ListAll(), "ID", "Name", selectedId);
+
+        }
+
         public JsonResult ChangeStatus(long id)
         {
             var result = new UserDao().ChangeStatus(id);

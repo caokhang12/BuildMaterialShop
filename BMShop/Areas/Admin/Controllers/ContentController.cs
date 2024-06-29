@@ -84,7 +84,7 @@ namespace BMShop.Areas.Admin.Controllers
         public void SetViewBag(long? selectedId = null)
         {
             var dao = new CategoryDao();
-            ViewBag.CategoryID = new SelectList(dao.ListAll(),"ID","Name", selectedId);
+            ViewBag.CategoryID = new SelectList(dao.ListAll(), "ID", "Name", selectedId);
 
         }
         public JsonResult ChangeStatus(long id)
